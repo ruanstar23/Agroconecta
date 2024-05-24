@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroConecta</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container" id="login-page">
+        <h1>AgroConecta</h1>
+        <form>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password">
+            <button type="button" onclick="showPage('dashboard-page')">Login</button>
+            <button type="button" onclick="showPage('register-page')">Registrar</button>
+            <a href="#" onclick="showPage('forgot-password-page')">Esqueci a Senha</a>
+        </form>
+    </div>
+
+    <div class="container" id="dashboard-page" style="display:none;">
+        <h1>Dashboard</h1>
+        <button onclick="showPage('products-page')">Navegar Produtos</button>
+        <button onclick="showPage('donate-page')">Doar/Trocar Alimentos</button>
+        <button onclick="showPage('profile-page')">Ver Perfil</button>
+    </div>
+
+    <div class="container" id="products-page" style="display:none;">
+        <h1>Produtos Disponíveis</h1>
+        <ul>
+            <li>Tomate (10kg) - Válido até 25/05/2024 - Local: SP <button onclick="showPage('product-details-page')">Ver Detalhes</button></li>
+            <li>Cenoura (5kg) - Válido até 27/05/2024 - Local: RJ <button onclick="showPage('product-details-page')">Ver Detalhes</button></li>
+        </ul>
+        <button onclick="showPage('dashboard-page')">Voltar</button>
+    </div>
+
+    <div class="container" id="product-details-page" style="display:none;">
+        <h1>Detalhes do Produto</h1>
+        <p><strong>Tomate</strong></p>
+        <p>Quantidade: 10kg</p>
+        <p>Data de Validade: 25/05/2024</p>
+        <p>Localização: SP</p>
+        <button>Adicionar ao Carrinho</button>
+        <button>Doar</button>
+        <button>Trocar</button>
+        <button onclick="showPage('products-page')">Voltar</button>
+    </div>
+
+    <div class="container" id="donate-page" style="display:none;">
+        <h1>Doar/Trocar Alimentos</h1>
+        <form>
+            <label for="product-name">Nome do Produto:</label>
+            <input type="text" id="product-name" name="product-name">
+            <label for="quantity">Quantidade:</label>
+            <input type="text" id="quantity" name="quantity">
+            <label for="expiry-date">Data de Validade:</label>
+            <input type="date" id="expiry-date" name="expiry-date">
+            <label for="location">Localização:</label>
+            <input type="text" id="location" name="location">
+            <button type="submit">Submeter</button>
+        </form>
+        <button onclick="showPage('dashboard-page')">Voltar</button>
+    </div>
+
+    <div class="container" id="profile-page" style="display:none;">
+        <h1>Perfil do Usuário</h1>
+        <p><strong>Nome:</strong> João Silva</p>
+        <p><strong>E-mail:</strong> joao@exemplo.com</p>
+        <h2>Histórico de Compras/Doações:</h2>
+        <ul>
+            <li>Tomate (10kg) - 20/05/2024</li>
+            <li>Cenoura (5kg) - 18/05/2024</li>
+        </ul>
+        <button onclick="showPage('edit-profile-page')">Editar Perfil</button>
+        <button onclick="showPage('dashboard-page')">Voltar</button>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.container');
+            pages.forEach(page => {
+                page.style.display = 'none';
+            });
+            document.getElementById(pageId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
